@@ -28,8 +28,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
-          tag_name: v${{ steps.timestamp.outputs.ts }}
-          release_name: Release ${{ steps.timestamp.outputs.ts }}
+          tag_name: v1.0.0-${{ steps.timestamp.outputs.ts }}
+          release_name: 发布版本 ${{ steps.timestamp.outputs.ts }}
           draft: false
           prerelease: false
           files: dist/source-code.zip
