@@ -1,0 +1,35 @@
+name: Release on Master Update
+
+on:
+  push:
+    branches:
+      - master  # 当推送到 master 分支时触发
+
+jobs:
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Get current timestamp
+        id: timestamp
+        run: echo "::set-output name=ts::$(date +%Y%m%d%H%M%S)"
+
+      - name: Create release archive
+        run: |
+          mkdir -p dist
+          zip -r dist/source-code.zip .
+
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.timestamp.outputs.ts }}
+          release_name: Release ${{ steps.timestamp.outputs.ts }}
+          draft: false
+          prerelease: false
+          files: dist/source-code.zip
