@@ -24,6 +24,7 @@ jobs:
           zip -r dist/source-code.zip .
 
       - name: Create GitHub Release
+        id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -32,4 +33,13 @@ jobs:
           release_name: Release ${{ steps.timestamp.outputs.ts }}
           draft: false
           prerelease: false
-          files: dist/source-code.zip
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: dist/source-code.zip
+          asset_name: source-code.zip
+          asset_content_type: application/zip
