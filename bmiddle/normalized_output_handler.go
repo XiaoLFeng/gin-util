@@ -21,7 +21,7 @@ func NormalizedOutputHandler(c *gin.Context) {
 
 	// 业务异常处理
 	if len(c.Errors) > 1 {
-		getErrMessage := "输出错误为多个，请查看日志，修改多输出"
+		getErrMessage := "超出输出异常处理范围，请检查输出是否出现冲突"
 		c.JSON(500, bmodel.BaseResponse{
 			Output:       bcode.SERVER_INTERNAL_ERROR.Output,
 			Code:         bcode.SERVER_INTERNAL_ERROR.Code,
