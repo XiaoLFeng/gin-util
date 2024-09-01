@@ -35,10 +35,6 @@ import (
 // 若 c.Error(err error) 中的 error 非 berror.BusinessError ，将会默认显示 bcode.NotImplemented，errorMessage 会显示自定义的 err.Error()。
 func ReturnResultMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		_ = c.Error(berror.BusinessError{
-			ErrorCode: bcode.ServerInternalError,
-			ErrorMsg:  "服务器内部错误(测试错误)",
-		})
 		w := &bstruct.CustomWriter{Body: bytes.NewBufferString(""), ResponseWriter: c.Writer}
 		c.Writer = w
 
