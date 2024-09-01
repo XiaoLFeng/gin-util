@@ -17,14 +17,14 @@ func TestGinLogger(t *testing.T) {
 	r := gin.Default()
 	bconfig.LogConfiguration("../.logs", "logger", true, logrus.TraceLevel)
 	r.GET("/test", func(c *gin.Context) {
-		blog.Trace("Trace")
-		blog.Tracef("Tracef")
-		blog.Debug("Debug")
-		blog.Debugf("Debugf")
-		blog.Info("Info")
-		blog.Infof("Infof")
-		blog.Warn("Warn")
-		blog.Warnf("Warnf")
+		blog.Trace("CONT", "Trace")
+		blog.Tracef("CONT", "Tracef")
+		blog.Debug("CONT", "Debug")
+		blog.Debugf("CONT", "Debugf")
+		blog.Info("CONT", "Info")
+		blog.Infof("CONT", "Infof")
+		blog.Warn("CONT", "Warn")
+		blog.Warnf("CONT", "Warnf")
 		c.JSON(200, gin.H{
 			"message": "OK",
 		})
@@ -36,7 +36,7 @@ func TestGinLogger(t *testing.T) {
 		})
 	})
 	r.GET("/errorf", func(c *gin.Context) {
-		blog.Errorf("Errorf")
+		blog.Errorf("CONT", "Errorf")
 		c.JSON(200, gin.H{
 			"message": "OK",
 		})
@@ -48,7 +48,7 @@ func TestGinLogger(t *testing.T) {
 		})
 	})
 	r.GET("/panicf", func(c *gin.Context) {
-		blog.Panicf("Panicf")
+		blog.Panicf("CONT", "Panicf")
 		c.JSON(200, gin.H{
 			"message": "OK",
 		})

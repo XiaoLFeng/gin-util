@@ -26,9 +26,9 @@ func LogConfiguration(path string, fileName string, enableColor bool, level logr
 	err := os.Mkdir(path, 0750)
 	if err != nil {
 		if os.IsExist(err) {
-			blog.Trace("日志文件夹已存在")
+			blog.Trace("INIT", "日志文件夹已存在")
 		} else {
-			blog.Fatalf("无法创建日志文件夹: %v", err)
+			blog.Fatalf("INIT", "无法创建日志文件夹: %v", err)
 		}
 	}
 	if !enableColor {
@@ -48,8 +48,8 @@ func LogConfiguration(path string, fileName string, enableColor bool, level logr
 			if i != 0 {
 				iPath = i - 1
 			}
-			blog.Info("本次采用日志文件 " + fileName + "-" + strconv.Itoa(iPath) + ".log")
-			blog.Tracef("日志文件路径: %s", getPath)
+			blog.Info("INIT", "本次采用日志文件 "+fileName+"-"+strconv.Itoa(iPath)+".log")
+			blog.Tracef("INIT", "日志文件路径: %s", getPath)
 			_, _ = os.Create(getPath)
 			break
 		} else {
@@ -63,7 +63,7 @@ func LogConfiguration(path string, fileName string, enableColor bool, level logr
 	// 打开一个日志文件
 	file, err := os.OpenFile(getPath, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err != nil {
-		blog.Fatalf("无法打开日志文件: %v", err)
+		blog.Fatalf("INIT", "无法打开日志文件: %v", err)
 	}
 	logrus.SetOutput(io.MultiWriter(file, os.Stdout))
 	gin.DefaultWriter = io.MultiWriter(file, os.Stdout)

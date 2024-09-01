@@ -12,8 +12,12 @@ import "github.com/sirupsen/logrus"
 //
 // # 参数
 //   - args: 日志信息
-func Trace(args ...interface{}) {
-	logrus.Trace(args...)
+func Trace(types string, args ...interface{}) {
+	var getArg string
+	for _, arg := range args {
+		getArg += arg.(string)
+	}
+	logrus.Trace(types+" | ", getArg)
 }
 
 // Tracef
@@ -27,8 +31,8 @@ func Trace(args ...interface{}) {
 // # 参数
 //   - format: 格式化字符串
 //   - args: 格式化参数
-func Tracef(format string, args ...interface{}) {
-	logrus.Tracef(format, args...)
+func Tracef(types string, format string, args ...interface{}) {
+	logrus.Tracef(types+" | "+format, args...)
 }
 
 // Debug
@@ -41,8 +45,12 @@ func Tracef(format string, args ...interface{}) {
 //
 // # 参数
 //   - args: 日志信息
-func Debug(args ...interface{}) {
-	logrus.Debug(args...)
+func Debug(types string, args ...interface{}) {
+	var getArg string
+	for _, arg := range args {
+		getArg += arg.(string)
+	}
+	logrus.Debug(types+" | ", getArg)
 }
 
 // Debugf
@@ -56,8 +64,8 @@ func Debug(args ...interface{}) {
 // # 参数
 //   - format: 格式化字符串
 //   - args: 格式化参数
-func Debugf(format string, args ...interface{}) {
-	logrus.Debugf(format, args...)
+func Debugf(types string, format string, args ...interface{}) {
+	logrus.Debugf(types+" | "+format, args...)
 }
 
 // Info
@@ -70,8 +78,12 @@ func Debugf(format string, args ...interface{}) {
 //
 // # 参数
 //   - args: 日志信息
-func Info(args ...interface{}) {
-	logrus.Info(args...)
+func Info(types string, args ...interface{}) {
+	var getArg string
+	for _, arg := range args {
+		getArg += arg.(string)
+	}
+	logrus.Info(types+" | ", getArg)
 }
 
 // Infof
@@ -85,8 +97,8 @@ func Info(args ...interface{}) {
 // # 参数
 //   - format: 格式化字符串
 //   - args: 格式化参数
-func Infof(format string, args ...interface{}) {
-	logrus.Infof(format, args...)
+func Infof(types string, format string, args ...interface{}) {
+	logrus.Infof(types+" | "+format, args...)
 }
 
 // Warn
@@ -99,8 +111,12 @@ func Infof(format string, args ...interface{}) {
 //
 // # 参数
 //   - args: 日志信息
-func Warn(args ...interface{}) {
-	logrus.Warn(args...)
+func Warn(types string, args ...interface{}) {
+	var getArg string
+	for _, arg := range args {
+		getArg += arg.(string)
+	}
+	logrus.Warn(types+" | ", getArg)
 }
 
 // Warnf
@@ -114,8 +130,8 @@ func Warn(args ...interface{}) {
 // # 参数
 //   - format: 格式化字符串
 //   - args: 格式化参数
-func Warnf(format string, args ...interface{}) {
-	logrus.Warnf(format, args...)
+func Warnf(types string, format string, args ...interface{}) {
+	logrus.Warnf(types+" | "+format, args...)
 }
 
 // Error
@@ -128,8 +144,12 @@ func Warnf(format string, args ...interface{}) {
 //
 // # 参数
 //   - args: 日志信息
-func Error(args ...interface{}) {
-	logrus.Error(args...)
+func Error(types string, args ...interface{}) {
+	var getArg string
+	for _, arg := range args {
+		getArg += arg.(string)
+	}
+	logrus.Error(types+" | ", getArg)
 }
 
 // Errorf
@@ -143,8 +163,8 @@ func Error(args ...interface{}) {
 // # 参数
 //   - format: 格式化字符串
 //   - args: 格式化参数
-func Errorf(format string, args ...interface{}) {
-	logrus.Errorf(format, args...)
+func Errorf(types string, format string, args ...interface{}) {
+	logrus.Errorf(types+" | "+format, args...)
 }
 
 // Fatal
@@ -157,8 +177,12 @@ func Errorf(format string, args ...interface{}) {
 //
 // # 参数
 //   - args: 日志信息
-func Fatal(args ...interface{}) {
-	logrus.Fatal(args...)
+func Fatal(types string, args ...interface{}) {
+	var getArg string
+	for _, arg := range args {
+		getArg += arg.(string)
+	}
+	logrus.Fatal(types+" | ", getArg)
 }
 
 // Fatalf
@@ -172,8 +196,8 @@ func Fatal(args ...interface{}) {
 // # 参数
 //   - format: 格式化字符串
 //   - args: 格式化参数
-func Fatalf(format string, args ...interface{}) {
-	logrus.Fatalf(format, args...)
+func Fatalf(types string, format string, args ...interface{}) {
+	logrus.Fatalf(types+" | "+format, args...)
 }
 
 // Panic
@@ -186,8 +210,12 @@ func Fatalf(format string, args ...interface{}) {
 //
 // # 参数
 //   - args: 日志信息
-func Panic(args ...interface{}) {
-	logrus.Panic(args...)
+func Panic(types string, args ...interface{}) {
+	var getArg string
+	for _, arg := range args {
+		getArg += arg.(string)
+	}
+	logrus.Panic(types+" | ", getArg)
 }
 
 // Panicf
@@ -201,8 +229,8 @@ func Panic(args ...interface{}) {
 // # 参数
 //   - format: 格式化字符串
 //   - args: 格式化参数
-func Panicf(format string, args ...interface{}) {
-	logrus.Panicf(format, args...)
+func Panicf(types string, format string, args ...interface{}) {
+	logrus.Panicf(types+" | "+format, args...)
 }
 
 // Print
@@ -215,8 +243,12 @@ func Panicf(format string, args ...interface{}) {
 //
 // # 参数
 //   - args: 日志信息
-func Print(args ...interface{}) {
-	logrus.Print(args...)
+func Print(types string, args ...interface{}) {
+	var getArg string
+	for _, arg := range args {
+		getArg += arg.(string)
+	}
+	logrus.Print(types+" | ", getArg)
 }
 
 // Printf
@@ -230,6 +262,6 @@ func Print(args ...interface{}) {
 // # 参数
 //   - format: 格式化字符串
 //   - args: 格式化参数
-func Printf(format string, args ...interface{}) {
-	logrus.Printf(format, args...)
+func Printf(types string, format string, args ...interface{}) {
+	logrus.Printf(types+" | "+format, args...)
 }
