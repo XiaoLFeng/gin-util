@@ -68,8 +68,8 @@ func ReturnResultMiddleware() gin.HandlerFunc {
 					// 检查页面是否存在
 					w.Body.Reset()
 					bresult.Error(c, bcode.NotImplemented.Code, bcode.NotImplemented.Output, bcode.NotImplemented.Message, "没有返回数据")
-					_, _ = w.WriteConfirm()
 				}
+				_, _ = w.WriteConfirm()
 			}
 		}
 	}
