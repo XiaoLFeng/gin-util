@@ -13,7 +13,7 @@ import "github.com/sirupsen/logrus"
 // # 参数
 //   - args: 日志信息
 func Trace(args ...interface{}) {
-	logrus.Trace(args)
+	logrus.Trace(args...)
 }
 
 // Tracef
@@ -28,7 +28,7 @@ func Trace(args ...interface{}) {
 //   - format: 格式化字符串
 //   - args: 格式化参数
 func Tracef(format string, args ...interface{}) {
-	logrus.Tracef(format, args)
+	logrus.Tracef(format, args...)
 }
 
 // Debug
@@ -42,7 +42,7 @@ func Tracef(format string, args ...interface{}) {
 // # 参数
 //   - args: 日志信息
 func Debug(args ...interface{}) {
-	logrus.Debug(args)
+	logrus.Debug(args...)
 }
 
 // Debugf
@@ -57,7 +57,7 @@ func Debug(args ...interface{}) {
 //   - format: 格式化字符串
 //   - args: 格式化参数
 func Debugf(format string, args ...interface{}) {
-	logrus.Debugf(format, args)
+	logrus.Debugf(format, args...)
 }
 
 // Info
@@ -71,7 +71,7 @@ func Debugf(format string, args ...interface{}) {
 // # 参数
 //   - args: 日志信息
 func Info(args ...interface{}) {
-	logrus.Info(args)
+	logrus.Info(args...)
 }
 
 // Infof
@@ -86,7 +86,7 @@ func Info(args ...interface{}) {
 //   - format: 格式化字符串
 //   - args: 格式化参数
 func Infof(format string, args ...interface{}) {
-	logrus.Infof(format, args)
+	logrus.Infof(format, args...)
 }
 
 // Warn
@@ -100,7 +100,7 @@ func Infof(format string, args ...interface{}) {
 // # 参数
 //   - args: 日志信息
 func Warn(args ...interface{}) {
-	logrus.Warn(args)
+	logrus.Warn(args...)
 }
 
 // Warnf
@@ -115,7 +115,7 @@ func Warn(args ...interface{}) {
 //   - format: 格式化字符串
 //   - args: 格式化参数
 func Warnf(format string, args ...interface{}) {
-	logrus.Warnf(format, args)
+	logrus.Warnf(format, args...)
 }
 
 // Error
@@ -129,7 +129,7 @@ func Warnf(format string, args ...interface{}) {
 // # 参数
 //   - args: 日志信息
 func Error(args ...interface{}) {
-	logrus.Error(args)
+	logrus.Error(args...)
 }
 
 // Errorf
@@ -144,7 +144,7 @@ func Error(args ...interface{}) {
 //   - format: 格式化字符串
 //   - args: 格式化参数
 func Errorf(format string, args ...interface{}) {
-	logrus.Errorf(format, args)
+	logrus.Errorf(format, args...)
 }
 
 // Fatal
@@ -158,7 +158,7 @@ func Errorf(format string, args ...interface{}) {
 // # 参数
 //   - args: 日志信息
 func Fatal(args ...interface{}) {
-	logrus.Fatal(args)
+	logrus.Fatal(args...)
 }
 
 // Fatalf
@@ -173,7 +173,7 @@ func Fatal(args ...interface{}) {
 //   - format: 格式化字符串
 //   - args: 格式化参数
 func Fatalf(format string, args ...interface{}) {
-	logrus.Fatalf(format, args)
+	logrus.Fatalf(format, args...)
 }
 
 // Panic
@@ -187,7 +187,7 @@ func Fatalf(format string, args ...interface{}) {
 // # 参数
 //   - args: 日志信息
 func Panic(args ...interface{}) {
-	logrus.Panic(args)
+	logrus.Panic(args...)
 }
 
 // Panicf
@@ -202,5 +202,34 @@ func Panic(args ...interface{}) {
 //   - format: 格式化字符串
 //   - args: 格式化参数
 func Panicf(format string, args ...interface{}) {
-	logrus.Panicf(format, args)
+	logrus.Panicf(format, args...)
+}
+
+// Print
+//
+// # 打印日志
+//
+// 用于打印日志信息，该方法会记录日志信息到日志文件中；
+// 该方法会记录日志信息到日志文件中；
+// 等级为 Info，用于记录日志信息。
+//
+// # 参数
+//   - args: 日志信息
+func Print(args ...interface{}) {
+	logrus.Print(args...)
+}
+
+// Printf
+//
+// # 格式化打印日志
+//
+// 用于打印格式化日志信息，该方法会记录日志信息到日志文件中；
+// 该方法会记录日志信息到日志文件中；
+// 等级为 Info，用于记录日志信息。
+//
+// # 参数
+//   - format: 格式化字符串
+//   - args: 格式化参数
+func Printf(format string, args ...interface{}) {
+	logrus.Printf(format, args...)
 }
