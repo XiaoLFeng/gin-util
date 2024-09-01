@@ -1,6 +1,8 @@
 package bresult
 
 import (
+	"encoding/json"
+	"github.com/XiaoLFeng/go-general-utils/bcode"
 	"github.com/XiaoLFeng/go-general-utils/bmodel"
 	"github.com/gin-gonic/gin"
 	"strconv"
@@ -17,13 +19,18 @@ import (
 //   - c: gin.Context		请求上下文
 //   - message: string		成功消息
 func Ok(c *gin.Context, message string) {
-	c.JSON(200, bmodel.BaseResponse{
+	c.Writer.WriteHeader(200)
+	marshal, err := json.Marshal(bmodel.BaseResponse{
 		Output:       "Ok",
 		Code:         200,
 		Message:      message,
 		ErrorMessage: nil,
 		Data:         nil,
 	})
+	if err != nil {
+		Error(c, bcode.BadRequestInvalidJson.Code, bcode.BadRequestInvalidJson.Output, bcode.BadRequestInvalidJson.Message, err.Error())
+	}
+	_, _ = c.Writer.Write(marshal)
 }
 
 // OkWithData
@@ -39,13 +46,18 @@ func Ok(c *gin.Context, message string) {
 //   - message: string		成功消息
 //   - data: interface{}	成功数据
 func OkWithData(c *gin.Context, message string, data interface{}) {
-	c.JSON(200, bmodel.BaseResponse{
+	c.Writer.WriteHeader(200)
+	marshal, err := json.Marshal(bmodel.BaseResponse{
 		Output:       "Ok",
 		Code:         200,
 		Message:      message,
 		ErrorMessage: nil,
 		Data:         data,
 	})
+	if err != nil {
+		Error(c, bcode.BadRequestInvalidJson.Code, bcode.BadRequestInvalidJson.Output, bcode.BadRequestInvalidJson.Message, err.Error())
+	}
+	_, _ = c.Writer.Write(marshal)
 }
 
 // Error
@@ -70,19 +82,24 @@ func Error(c *gin.Context, code uint, output, message, errorMessage string) {
 		// 大于 1000 的错误码，选择前三位返回
 		getCode, err := strconv.Atoi(strconv.Itoa(int(code))[:3])
 		if err != nil {
-			Error(c, 500, "Error", "Error", "Error code is invalid")
+			Error(c, bcode.ServerInternalError.Code/100, bcode.ServerInternalError.Output, bcode.ServerInternalError.Message, err.Error())
 		}
 		statusCode = getCode
 	} else {
 		statusCode = int(code)
 	}
-	c.JSON(statusCode, bmodel.BaseResponse{
+	c.Writer.WriteHeader(statusCode)
+	marshal, err := json.Marshal(bmodel.BaseResponse{
 		Output:       output,
 		Code:         code,
 		Message:      message,
 		ErrorMessage: &errorMessage,
 		Data:         nil,
 	})
+	if err != nil {
+		Error(c, bcode.BadRequestInvalidJson.Code, bcode.BadRequestInvalidJson.Output, bcode.BadRequestInvalidJson.Message, err.Error())
+	}
+	_, _ = c.Writer.Write(marshal)
 	c.Abort()
 }
 
@@ -116,12 +133,17 @@ func ErrorWithData(c *gin.Context, code uint, output, message, errorMessage stri
 	} else {
 		statusCode = int(code)
 	}
-	c.JSON(statusCode, bmodel.BaseResponse{
+	c.Writer.WriteHeader(statusCode)
+	marshal, err := json.Marshal(bmodel.BaseResponse{
 		Output:       output,
 		Code:         code,
 		Message:      message,
 		ErrorMessage: &errorMessage,
 		Data:         data,
 	})
+	if err != nil {
+		Error(c, bcode.BadRequestInvalidJson.Code, bcode.BadRequestInvalidJson.Output, bcode.BadRequestInvalidJson.Message, err.Error())
+	}
+	_, _ = c.Writer.Write(marshal)
 	c.Abort()
 }

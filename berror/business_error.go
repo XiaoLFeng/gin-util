@@ -2,14 +2,13 @@ package berror
 
 import "github.com/XiaoLFeng/go-general-utils/bcode"
 
-type BusinessData struct {
+type BusinessError struct {
 	ErrorCode bcode.ErrorCode
-	Msg       string
 	ErrorMsg  string
 	Data      interface{}
 }
 
-type BusinessError interface {
+type BusinessErrImpl interface {
 	Error() string
 	GetCode() uint
 	GetMessage() string
@@ -19,26 +18,24 @@ type BusinessError interface {
 // Error
 //
 // # 获取错误信息
-func (e BusinessData) Error() string {
+func (e BusinessError) Error() string {
 	return e.ErrorMsg
 }
 
-func (e BusinessData) GetCode() uint {
+func (e BusinessError) GetCode() uint {
 	return e.ErrorCode.Code
 }
 
-func New(berror bcode.ErrorCode, msg, errMsg string) error {
-	return BusinessData{
+func New(berror bcode.ErrorCode, errMsg string) error {
+	return BusinessError{
 		ErrorCode: berror,
-		Msg:       msg,
 		ErrorMsg:  errMsg,
 	}
 }
 
-func NewWithData(berror bcode.ErrorCode, msg, errMsg string, data interface{}) error {
-	return BusinessData{
+func NewWithData(berror bcode.ErrorCode, errMsg string, data interface{}) error {
+	return BusinessError{
 		ErrorCode: berror,
-		Msg:       msg,
 		ErrorMsg:  errMsg,
 		Data:      data,
 	}
