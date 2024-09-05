@@ -1,5 +1,3 @@
-github.com/XiaoLFeng/go-general-utils v1.0.0-20240831161312 h1:lTcW8RsqXvj57yHg5fKwg+KCF3kU9Ho9ow8d8j3ci0c=
-github.com/XiaoLFeng/go-general-utils v1.0.0-20240831161312/go.mod h1:gDYscllTXsZBAqOtPbzQXUMi8zYFr4SN6NeEPvedWSM=
 github.com/XiaoLFeng/go-general-utils v1.0.0-20240831162404 h1:pZbA4sdhyjGNzg/k+tI8woXguVTh+/vKHYZHcZLNgsk=
 github.com/XiaoLFeng/go-general-utils v1.0.0-20240831162404/go.mod h1:gDYscllTXsZBAqOtPbzQXUMi8zYFr4SN6NeEPvedWSM=
 github.com/bytedance/sonic v1.12.2 h1:oaMFuRTpMHYLpCntGca65YWt5ny+wAceDERTkT2L9lg=

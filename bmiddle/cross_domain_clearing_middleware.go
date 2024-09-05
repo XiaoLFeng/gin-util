@@ -1,6 +1,9 @@
 package bmiddle
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/XiaoLFeng/go-gin-util/bresult"
+	"github.com/gin-gonic/gin"
+)
 
 // CrossDomainClearingMiddleware
 //
@@ -14,6 +17,13 @@ import "github.com/gin-gonic/gin"
 func CrossDomainClearingMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.Header("Access-Control-Allow-Origin", "*")
+		// 检查是否为 OPTION
+		if c.Request.Method == "OPTIONS" {
+			// 允许所有的请求方法
+			bresult.Ok(c, "Ok")
+			c.Abort()
+			return
+		}
 		c.Next()
 	}
 }
